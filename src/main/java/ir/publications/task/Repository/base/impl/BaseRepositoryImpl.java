@@ -5,24 +5,19 @@ import ir.publications.task.model.baseModel.BaseInformation;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
+import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.stereotype.Repository;
 
 
 import java.util.List;
 
-@Repository
-@Transactional
-public class BaseRepositoryImpl<T ,ID> implements BaseRepository<T, ID> {
+@NoRepositoryBean
+public abstract class BaseRepositoryImpl<T ,ID> implements BaseRepository<T, ID> {
 
     @PersistenceContext
     private EntityManager entityManager;
 
-    private final Class<T> entityClass;
-
-    public BaseRepositoryImpl(EntityManager entityManager, Class<T> entityClass) {
-        this.entityManager = entityManager;
-        this.entityClass = entityClass;
-    }
+    public abstract Class<T> getEntityClass();
 
     @Override
     @Transactional
@@ -51,12 +46,12 @@ public class BaseRepositoryImpl<T ,ID> implements BaseRepository<T, ID> {
 
     @Override
     public List<T> findAll() {
-        return entityManager.createQuery("SELECT e FROM " + entityClass.getSimpleName() + " e", entityClass)
+        return entityManager.createQuery("SELECT e FROM " + getEntityClass().getSimpleName() + " e", getEntityClass())
                 .getResultList();
     }
     @Override
     public T findById(ID id) {
-        return entityManager.find(entityClass, id);
+        return entityManager.find(getEntityClass(), id);
     }
 
 }

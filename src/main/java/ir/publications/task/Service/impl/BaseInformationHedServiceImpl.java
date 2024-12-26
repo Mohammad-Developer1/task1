@@ -11,8 +11,8 @@ import java.util.List;
 @Service
 public class BaseInformationHedServiceImpl implements BaseInformationHedService {
 
-    @Autowired
-    private BaseInformationHedRepository bir;
+
+    private final BaseInformationHedRepository bir;
 
     public BaseInformationHedServiceImpl(BaseInformationHedRepository bir) {
         this.bir = bir;

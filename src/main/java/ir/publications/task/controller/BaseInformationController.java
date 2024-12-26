@@ -17,24 +17,25 @@ import java.util.List;
 @RequestMapping("/BaseInformation")
 public class BaseInformationController {
 
+
     @Autowired
-    private BaseInformationService bis;
+    BaseInformationService baseInformationService;
 
 
     @PostMapping("/save_and_update_BaseInformation")
     public ResponseEntity<BaseInformation> saveAndUpdateBaseInformation(@RequestBody BaseInformation baseInformation) {
-        bis.saveAndUpdateBaseInfo(baseInformation);
+        baseInformationService.saveAndUpdateBaseInfo(baseInformation);
         return ResponseEntity.ok(baseInformation);
     }
 
     @PostMapping("/delete_BaseInformation")
     public Boolean deleteBaseInformation(Long id) {
-        return bis.deleteBaseInformation(id);
+        return baseInformationService.deleteBaseInformation(id);
     }
 
     @GetMapping("/get_BaseInformation")
     public ResponseEntity<List<BaseInformation>> getBaseInformation() {
-        List<BaseInformation> all = bis.getBaseInformation();
+        List<BaseInformation> all = baseInformationService.getBaseInformation();
         return ResponseEntity.ok(all);
     }
 

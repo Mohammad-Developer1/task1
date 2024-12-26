@@ -5,24 +5,25 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 import java.io.Serializable;
 import java.sql.Date;
 import java.time.LocalDate;
 
-@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@MappedSuperclass
 public class Base implements Serializable {
 
     @Id
     @GeneratedValue
     private Long id;
 
-    @Column(nullable = false)
+    @Column
     private String createdBy;
 
-    @Column(nullable = false)
+    @Column
     private LocalDate createdDate;
 
     @Column
