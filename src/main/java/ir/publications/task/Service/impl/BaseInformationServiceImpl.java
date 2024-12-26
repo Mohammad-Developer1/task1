@@ -11,13 +11,9 @@ import java.util.List;
 @Service
 public class BaseInformationServiceImpl implements BaseInformationService {
 
-
+    @Autowired
     private BaseInformationRepository bir;
 
-    public BaseInformationServiceImpl(){
-        super();
-    }
-    @Autowired
     public BaseInformationServiceImpl(BaseInformationRepository bir) {
         this.bir = bir;
     }
