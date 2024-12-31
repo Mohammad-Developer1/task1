@@ -31,7 +31,7 @@ public class ClassRoomController {
         return cs.deleteClassRoom(id);
     }
 
-    @GetMapping("/get_classRoom")
+    @GetMapping("/getClassRoom")
     @ResponseBody
     public List<ClassRoomViewModel> getClassRoom() {
         return ModelMapper.mapList(cs.getAllClassRooms(), ClassRoomViewModel.class);

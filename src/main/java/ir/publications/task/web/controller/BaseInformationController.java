@@ -20,19 +20,19 @@ public class BaseInformationController {
     BaseInformationService baseInformationService;
 
 
-    @PostMapping("/save_and_update_BaseInformation")
+    @PostMapping("/saveAndUpdateBaseInformation")
     @ResponseBody
     public BaseInformation saveAndUpdateBaseInformation(@RequestBody BaseInformationViewModel baseInformationViewModel) {
         return baseInformationService.saveAndUpdateBaseInfo(ModelMapper.map(baseInformationViewModel, BaseInformation.class));
     }
 
-    @DeleteMapping("/delete_BaseInformation/{id}")
+    @DeleteMapping("/deleteBaseInformation/{id}")
     @ResponseBody
     public Boolean deleteBaseInformation(@PathVariable  Long id) {
         return baseInformationService.deleteBaseInformation(id);
     }
 
-    @GetMapping("/get_BaseInformation")
+    @GetMapping("/getBaseInformation")
     @ResponseBody
     public List<BaseInformationViewModel> getBaseInformation() {
         return ModelMapper.mapList(baseInformationService.getBaseInformation(), BaseInformationViewModel.class);

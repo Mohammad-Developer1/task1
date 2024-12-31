@@ -1,7 +1,10 @@
 package ir.publications.task.web.controller;
 
+import ch.qos.logback.core.model.Model;
 import ir.publications.task.Service.BaseInformationHedService;
 import ir.publications.task.model.baseModel.BaseInformationHed;
+import ir.publications.task.util.mapper.ModelMapper;
+import ir.publications.task.web.viewModel.BaseInformationHedViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -16,23 +19,23 @@ public class BaseInformationHedController {
     @Autowired
     private BaseInformationHedService bis;
 
-    @PostMapping("/save_and_update_BaseInformationHed")
-    public ResponseEntity<BaseInformationHed> saveAndUpdateBaseInformationHed(@RequestBody BaseInformationHed baseInformationHed) {
-        bis.saveAndUpdateBaseInformationHedRepository(baseInformationHed);
-        return ResponseEntity.ok(baseInformationHed);
+    @PostMapping("/saveAndUpdateBaseInformationHed")
+    @ResponseBody
+    public BaseInformationHed saveAndUpdateBaseInformationHed(@RequestBody BaseInformationHedViewModel baseInformationHedViewModel) {
+      return  bis.saveAndUpdateBaseInformationHedRepository(ModelMapper.map(baseInformationHedViewModel, BaseInformationHed.class));
     }
 
+
+    @DeleteMapping("/deleteBaseInformationHed/{id}")
     @ResponseBody
-    @DeleteMapping("/delete_BaseInformationHed/{id}")
     public Boolean deleteBaseInformationHed(@PathVariable Long id) {
         return bis.deleteBaseInformationHedRepository(id);
     }
 
 
-    @GetMapping("/get_BaseInformationHed")
-    public ResponseEntity<List<BaseInformationHed>> getBaseInformationHed() {
-        List<BaseInformationHed> all = bis.getBaseInformationHedRepository();
-        return ResponseEntity.ok(all);
+    @GetMapping("/getBaseInformationHed")
+    public List<BaseInformationHedViewModel> getBaseInformationHed() {
+        return ModelMapper.mapList(bis.getBaseInformationHedRepository(), BaseInformationHedViewModel.class);
     }
 
 

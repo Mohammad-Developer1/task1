@@ -1,14 +1,14 @@
 package ir.publications.task.web.controller;
 
+import ir.publications.task.Repository.MajorRepository;
 import ir.publications.task.Service.MajorService;
 import ir.publications.task.model.Major;
+import ir.publications.task.util.mapper.ModelMapper;
+import ir.publications.task.web.viewModel.MajorViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,20 +20,21 @@ public class MajorController {
     private MajorService majorService;
 
 
-    @PostMapping("/save_and_update_Major")
-    public ResponseEntity<Major> saveAndUpdateMajor(@RequestBody Major major) {
-        majorService.saveAndUpdateMajor(major);
-        return ResponseEntity.ok(major);
+    @PostMapping("/saveAndUpdateMajor")
+    @ResponseBody
+    public Major saveAndUpdateMajor(@RequestBody MajorViewModel majorViewModel) {
+        return majorService.saveAndUpdateMajor(ModelMapper.map(majorViewModel, Major.class));
     }
 
-    @PostMapping("/delete_Major")
-    public Boolean deleteMajor(Long id) {
+    @DeleteMapping("/deleteMajor/{id}")
+    @ResponseBody
+    public Boolean deleteMajor(@PathVariable Long id) {
         return majorService.deleteMajor(id);
     }
 
-    @GetMapping("/get_Major")
-    public ResponseEntity<List<Major>> getMajor() {
-        List<Major> all = majorService.getMajors();
-        return ResponseEntity.ok(all);
+    @GetMapping("/getMajor")
+    @ResponseBody
+    public List<MajorViewModel> getMajor() {
+        return ModelMapper.mapList(majorService.getMajors(), MajorViewModel.class);
     }
 }

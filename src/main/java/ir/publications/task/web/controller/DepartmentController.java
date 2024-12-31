@@ -2,13 +2,11 @@ package ir.publications.task.web.controller;
 
 import ir.publications.task.Service.DepartmentService;
 import ir.publications.task.model.Department;
+import ir.publications.task.util.mapper.ModelMapper;
+import ir.publications.task.web.viewModel.DepartmentViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,20 +16,21 @@ public class DepartmentController {
     @Autowired
     private DepartmentService departmentService;
 
-    @PostMapping("/save_and_update_department")
-    public ResponseEntity<Department> saveAndUpdateDepartment(@RequestBody Department department) {
-        departmentService.saveAndUpdateDepartment(department);
-        return ResponseEntity.ok(department);
+    @PostMapping("/saveAndUpdateDepartment")
+    @ResponseBody
+    public Department saveAndUpdateDepartment(@RequestBody DepartmentViewModel departmentViewModel) {
+        return departmentService.saveAndUpdateDepartment(ModelMapper.map(departmentViewModel, Department.class));
     }
 
-    @PostMapping("/delete_department")
-    public Boolean deleteDepartment(Long id) {
+    @DeleteMapping("/deleteDepartment/{id}")
+    @ResponseBody
+    public Boolean deleteDepartment(@PathVariable Long id) {
         return departmentService.deleteDepartment(id);
     }
 
-    @GetMapping("/get_department")
-    public ResponseEntity<List<Department>> getDepartment() {
-        List<Department> all = departmentService.getAllDepartments();
-        return ResponseEntity.ok(all);
+    @GetMapping("/getDepartment")
+    @ResponseBody
+    public List<DepartmentViewModel> getDepartment() {
+        return ModelMapper.mapList(departmentService.getAllDepartments(), DepartmentViewModel.class);
     }
 }

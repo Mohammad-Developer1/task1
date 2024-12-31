@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface CourseRegistrationService {
 
-    CourseRegistration registerCourse(CourseRegistration courseRegistration);
+    CourseRegistration saveAndUpdate(CourseRegistration courseRegistration);
 
     Boolean deleteCourseRegistration(Long id);
 

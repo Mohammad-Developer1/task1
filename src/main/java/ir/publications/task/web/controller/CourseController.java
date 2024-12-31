@@ -2,13 +2,12 @@ package ir.publications.task.web.controller;
 
 import ir.publications.task.Service.CourseService;
 import ir.publications.task.model.Course;
+import ir.publications.task.util.mapper.ModelMapper;
+import ir.publications.task.web.viewModel.CourseViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,20 +19,21 @@ public class CourseController {
     private CourseService courseService;
 
 
-    @PostMapping("/save_and_update_course")
-    public ResponseEntity<Course> saveAndUpdateCourse(@RequestBody Course course) {
-        courseService.saveAndUpdateCourse(course);
-        return ResponseEntity.ok(course);
+    @PostMapping("/saveAndUpdateCourse")
+    @ResponseBody
+    public Course saveAndUpdateCourse(@RequestBody CourseViewModel courseViewModel) {
+        return courseService.saveAndUpdateCourse(ModelMapper.map(courseViewModel, Course.class));
     }
 
-    @PostMapping("/delete_course")
-    public Boolean deleteCourse(Long id) {
+    @DeleteMapping("/deleteCourse/{id}")
+    @ResponseBody
+    public Boolean deleteCourse(@PathVariable Long id) {
         return courseService.deleteCourse(id);
     }
 
-    @GetMapping("/get_course")
-    public ResponseEntity<List<Course>> getCourse() {
-        List<Course> all = courseService.getAllCourses();
-        return ResponseEntity.ok(all);
+    @GetMapping("/getCourse")
+    @ResponseBody
+    public List<CourseViewModel> getCourse() {
+        return ModelMapper.mapList(courseService.getAllCourses(), CourseViewModel.class);
     }
 }

@@ -2,13 +2,12 @@ package ir.publications.task.web.controller;
 
 import ir.publications.task.Service.CourseRegistrationService;
 import ir.publications.task.model.CourseRegistration;
+import ir.publications.task.util.mapper.ModelMapper;
+import ir.publications.task.web.viewModel.CourseRegistrationViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,21 +18,22 @@ public class CourseRegistrationController {
     @Autowired
     private CourseRegistrationService crs;
 
-    @PostMapping("/save_and_update_courseRegistration")
-    public ResponseEntity<CourseRegistration> saveAndCourseRegistration(@RequestBody CourseRegistration courseRegistration) {
-        crs.registerCourse(courseRegistration);
-        return ResponseEntity.ok(courseRegistration);
+    @PostMapping("/saveAndCourseRegistration")
+    @ResponseBody
+    public CourseRegistration saveAndCourseRegistration(@RequestBody CourseRegistrationViewModel courseRegistrationViewModel) {
+        return crs.saveAndUpdate(ModelMapper.map(courseRegistrationViewModel, CourseRegistration.class));
     }
 
-    @PostMapping("/delete_courseRegistration")
-    public Boolean deleteCourseRegistration(Long id) {
+    @DeleteMapping("/deleteCourseRegistration/{id}")
+    @ResponseBody
+    public Boolean deleteCourseRegistration(@PathVariable Long id) {
         return crs.deleteCourseRegistration(id);
     }
 
-    @GetMapping("/get_courseRegistration")
-    public ResponseEntity<List<CourseRegistration>> getCourseRegistration() {
-        List<CourseRegistration> all = crs.getAllCourseRegistrations();
-        return ResponseEntity.ok(all);
+    @GetMapping("/getCourseRegistration")
+    @ResponseBody
+    public List<CourseRegistrationViewModel> getCourseRegistration() {
+        return ModelMapper.mapList(crs.getAllCourseRegistrations(),CourseRegistrationViewModel.class);
     }
 
 }

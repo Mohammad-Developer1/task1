@@ -20,7 +20,7 @@ public class CourseRegistrationServiceImpl implements CourseRegistrationService 
 
 
     @Override
-    public CourseRegistration registerCourse(CourseRegistration courseRegistration) {
+    public CourseRegistration saveAndUpdate(CourseRegistration courseRegistration) {
         if (courseRegistration == null) {
             throw new NullPointerException("Course registration is null");
         } else {
