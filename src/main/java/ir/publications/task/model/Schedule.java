@@ -16,7 +16,7 @@ import java.time.LocalTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "Schedule")
-public class Schedule extends Base {
+public class Schedule extends Base<Long> {
 
     @Enumerated(EnumType.STRING)
     private Week day;

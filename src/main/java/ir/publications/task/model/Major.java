@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "Major")
-public class Major extends Base {
+public class Major extends Base<Long> {
 
     private String name;
 

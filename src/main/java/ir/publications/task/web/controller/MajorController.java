@@ -1,4 +1,4 @@
-package ir.publications.task.controller;
+package ir.publications.task.web.controller;
 
 import ir.publications.task.Service.MajorService;
 import ir.publications.task.model.Major;

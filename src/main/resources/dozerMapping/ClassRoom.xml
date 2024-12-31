@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://dozer.sourceforge.net https://dozer.sourceforge.net/schema/beanmapping.xsd">
+    <mapping>
+        <class-a>ir.publications.task.model.ClassRoom</class-a>
+        <class-b>ir.publications.task.web.viewModel.ClassRoomViewModel</class-b>
+        <field>
+            <a>teacher.id</a>
+            <b>teacherId</b>
+            <a-hint>java.lang.Long</a-hint>
+            <b-hint>java.lang.Long</b-hint>
+        </field>
+        <field type="one-way">
+            <a>teacher.firstName</a>
+            <b>teacherFirstName</b>
+            <a-hint>java.lang.String</a-hint>
+            <b-hint>java.lang.String</b-hint>
+        </field>
+        <field type="one-way">
+            <a>teacher.lastName</a>
+            <b>teacherLastName</b>
+            <a-hint>java.lang.String</a-hint>
+            <b-hint>java.lang.String</b-hint>
+        </field>
+        <field>
+            <a>university.id</a>
+            <b>universityId</b>
+            <a-hint>java.lang.Long</a-hint>
+            <b-hint>java.lang.Long</b-hint>
+        </field>
+        <field type="one-way">
+            <a>university.name</a>
+            <b>universityName</b>
+            <a-hint>java.lang.String</a-hint>
+            <b-hint>java.lang.String</b-hint>
+        </field>
+        <field>
+            <a>schedule.id</a>
+            <b>scheduleId</b>
+            <a-hint>java.lang.Long</a-hint>
+            <b-hint>java.lang.Long</b-hint>
+        </field>
+        <field>
+            <a>semester.id</a>
+            <b>semesterId</b>
+            <a-hint>java.lang.Long</a-hint>
+            <b-hint>java.lang.Long</b-hint>
+        </field>
+        <field type="one-way">
+            <a>semester.name</a>
+            <b>semesterName</b>
+            <a-hint>java.lang.String</a-hint>
+            <b-hint>java.lang.String</b-hint>
+        </field>
+    </mapping>
+</mappings>

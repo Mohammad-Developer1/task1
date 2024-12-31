@@ -40,6 +40,6 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public List<Teacher> getTeachers() {
-        return List.of();
+        return tr.findAll();
     }
 }

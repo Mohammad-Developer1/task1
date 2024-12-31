@@ -7,30 +7,29 @@ import lombok.NoArgsConstructor;
 
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @MappedSuperclass
-public class Base implements Serializable {
+public abstract class Base<T> implements Serializable {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private T id;
 
     @Column
     private String createdBy;
 
     @Column
-    private LocalDate createdDate;
+    private String createdDate;
 
     @Column
     private String updatedBy;
 
     @Column
-    private LocalDate updatedDate;
+    private String updatedDate;
 
     @Column
     private String ip;

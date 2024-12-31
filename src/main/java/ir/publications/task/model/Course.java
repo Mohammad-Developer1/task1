@@ -15,7 +15,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "COURSE")
-public class Course extends Base {
+public class Course extends Base<Long> {
 
     @Column
     private String title;

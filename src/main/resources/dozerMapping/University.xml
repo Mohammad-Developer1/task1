@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://dozer.sourceforge.net https://dozer.sourceforge.net/schema/beanmapping.xsd">
+    <mapping>
+        <class-a>ir.publications.task.model.University</class-a>
+        <class-b>ir.publications.task.web.viewModel.UniversityViewModel</class-b>
+        <field type="one-way">
+            <a>name</a>
+            <b>name</b>
+            <a-hint>java.lang.String</a-hint>
+            <b-hint>java.lang.String</b-hint>
+        </field>
+        <field type="one-way">
+            <a>address</a>
+            <b>address</b>
+            <a-hint>java.lang.String</a-hint>
+            <b-hint>java.lang.String</b-hint>
+        </field>
+        <field>
+            <a>baseInformation.id</a>
+            <b>baseInformationId</b>
+            <a-hint>java.lang.Long</a-hint>
+            <b-hint>java.lang.Long</b-hint>
+        </field>
+        <field type="one-way">
+            <a>baseInformation.title</a>
+            <b>baseInformationTitle</b>
+            <a-hint>java.lang.String</a-hint>
+            <b-hint>java.lang.String</b-hint>
+        </field>
+    </mapping>
+</mappings>

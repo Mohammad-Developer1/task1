@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "CourseRegistration")
-public class CourseRegistration extends Base {
+public class CourseRegistration extends Base<Long> {
 
     private Long year;
 

@@ -1,7 +1,6 @@
-package ir.publications.task.controller;
+package ir.publications.task.web.controller;
 
 import ir.publications.task.Service.CourseService;
-import ir.publications.task.model.ClassRoom;
 import ir.publications.task.model.Course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

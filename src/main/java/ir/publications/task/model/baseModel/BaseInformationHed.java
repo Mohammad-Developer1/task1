@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BaseInformationHed extends Base {
+public class BaseInformationHed extends Base<Long> {
 
     @Column(length = 50)
     private String title;

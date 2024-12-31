@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "ClassRoom")
-public class ClassRoom extends Base {
+public class ClassRoom extends Base<Long> {
 
 
     @ManyToOne

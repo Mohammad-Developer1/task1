@@ -1,16 +1,13 @@
-package ir.publications.task.controller;
+package ir.publications.task.web.controller;
 
-import ir.publications.task.Service.CourseService;
 import ir.publications.task.Service.ScheduleService;
-import ir.publications.task.model.Course;
 import ir.publications.task.model.Schedule;
+import ir.publications.task.util.mapper.ModelMapper;
+import ir.publications.task.web.viewModel.ScheduleViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,18 +19,21 @@ public class ScheduleController {
     private ScheduleService scheduleService;
 
 
-    @PostMapping("/save_and_update_schedule")
-    public ResponseEntity<Schedule> saveAndUpdateSchedule(@RequestBody Schedule schedule) {
-        scheduleService.saveAndUpdateSchedule(schedule);
-        return ResponseEntity.ok(schedule);
+    @PostMapping("/saveAndUpdateSchedule")
+    @ResponseBody
+    public Schedule saveAndUpdateSchedule(@RequestBody ScheduleViewModel scheduleViewModel) {
+        return scheduleService.saveAndUpdateSchedule(ModelMapper.map(scheduleViewModel, Schedule.class));
+
     }
 
-    @PostMapping("/delete_schedule")
+    @DeleteMapping("/deleteSchedule")
+    @ResponseBody
     public Boolean deleteSchedule(Long id) {
         return scheduleService.deleteSchedule(id);
     }
 
-    @GetMapping("/get_schedule")
+    @GetMapping("/getSchedule")
+    @ResponseBody
     public ResponseEntity<List<Schedule>> getSchedule() {
         List<Schedule> all = scheduleService.getSchedules();
         return ResponseEntity.ok(all);

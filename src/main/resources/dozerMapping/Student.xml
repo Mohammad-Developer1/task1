@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://dozer.sourceforge.net https://dozer.sourceforge.net/schema/beanmapping.xsd">
+    <mapping>
+        <class-a>ir.publications.task.model.Student</class-a>
+        <class-b>ir.publications.task.web.viewModel.StudentViewModel</class-b>
+        <field type="one-way">
+            <a>score</a>
+            <b>score</b>
+            <a-hint>java.lang.Double</a-hint>
+            <b-hint>java.lang.Double</b-hint>
+        </field>
+        <field>
+            <a>department.id</a>
+            <b>departmentId</b>
+            <a-hint>java.lang.Long</a-hint>
+            <b-hint>java.lang.Long</b-hint>
+        </field>
+        <field type="one-way">
+            <a>department.name</a>
+            <b>departmentName</b>
+            <a-hint>java.lang.String</a-hint>
+            <b-hint>java.lang.String</b-hint>
+        </field>
+        <field>
+            <a>major.id</a>
+            <b>majorId</b>
+            <a-hint>java.lang.Long</a-hint>
+            <b-hint>java.lang.Long</b-hint>
+        </field>
+        <field type="one-way">
+            <a>major.name</a>
+            <b>majorName</b>
+            <a-hint>java.lang.String</a-hint>
+            <b-hint>java.lang.String</b-hint>
+        </field>
+        <field>
+            <a>courseRegistrations</a>
+            <b>courseRegistrations</b>
+        </field>
+        <field>
+            <a>semesters</a>
+            <b>semesters</b>
+        </field>
+    </mapping>
+</mappings>

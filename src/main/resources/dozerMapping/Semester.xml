@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://dozer.sourceforge.net https://dozer.sourceforge.net/schema/beanmapping.xsd">
+    <mapping>
+        <class-a>ir.publications.task.model.Semester</class-a>
+        <class-b>ir.publications.task.web.viewModel.SemesterViewModel</class-b>
+        <field type="one-way">
+            <a>name</a>
+            <b>name</b>
+        </field>
+        <field type="one-way">
+            <a>startDate</a>
+            <b>startDate</b>
+            <a-hint>java.time.LocalDate</a-hint>
+            <b-hint>java.lang.String</b-hint>
+        </field>
+            <field type="one-way">
+                <a>endTimeDate</a>
+                <b>endTimeDate</b>
+                <a-hint>java.time.LocalDate</a-hint>
+                <b-hint>java.lang.String</b-hint>
+            </field>
+        <field>
+            <a>courses</a>
+            <b>courses</b>
+        </field>
+        <field>
+            <a>teachers</a>
+            <b>teachers</b>
+        </field>
+    </mapping>
+</mappings>

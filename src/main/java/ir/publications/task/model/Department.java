@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "Department")
-public class Department extends Base {
+public class Department extends Base<Long> {
     @Column
     private String name;
 

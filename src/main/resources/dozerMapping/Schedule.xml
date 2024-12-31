@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://dozer.sourceforge.net https://dozer.sourceforge.net/schema/beanmapping.xsd">
+    <mapping>
+        <class-a>ir.publications.task.model.Schedule</class-a>
+        <class-b>ir.publications.task.web.viewModel.ScheduleViewModel</class-b>
+        <field type="one-way">
+            <a>day</a>
+            <b>day</b>
+            <a-hint>java.lang.Enum</a-hint>
+            <b-hint>java.lang.Enum</b-hint>
+        </field>
+        <field type="one-way">
+            <a>startTime</a>
+            <b>startTime</b>
+            <a-hint>java.time.LocalTime</a-hint>
+            <b-hint>java.lang.String</b-hint>
+        </field>
+        <field type="one-way">
+            <a>endTime</a>
+            <b>endTime</b>
+            <a-hint>java.time.LocalTime</a-hint>
+            <b-hint>java.lang.String</b-hint>
+        </field>
+    </mapping>
+</mappings>

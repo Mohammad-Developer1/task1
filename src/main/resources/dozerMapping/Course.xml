@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://dozer.sourceforge.net https://dozer.sourceforge.net/schema/beanmapping.xsd">
+    <mapping>
+        <class-a>ir.publications.task.model.Course</class-a>
+        <class-b>ir.publications.task.web.viewModel.CourseViewModel</class-b>
+        <field type="one-way">
+            <a>title</a>
+            <b>Title</b>
+            <a-hint>java.lang.String</a-hint>
+            <b-hint>java.lang.String</b-hint>
+        </field>
+        <field type="one-way">
+            <a>unit</a>
+            <b>unit</b>
+            <a-hint>java.lang.Long</a-hint>
+            <b-hint>java.lang.Long</b-hint>
+        </field>
+        <field>
+            <a>department</a>
+            <b>Departments</b>
+        </field>
+        <field>
+            <a>majors</a>
+            <b>majors</b>
+        </field>
+        <field>
+            <a>prerequisites</a>
+            <b>prerequisites</b>
+        </field>
+        <field>
+            <a>classes</a>
+            <b>classrooms</b>
+        </field>
+    </mapping>
+</mappings>

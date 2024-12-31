@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "University")
-public class University extends Base {
+public class University extends Base<Long> {
     private String name;
     private String address;
 

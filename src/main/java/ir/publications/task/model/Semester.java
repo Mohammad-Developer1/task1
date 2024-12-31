@@ -19,7 +19,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "Semester")
-public class Semester extends Base {
+public class Semester extends Base<Long> {
 
     private String name;
 
